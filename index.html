@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JoyCraft | Правила проекта</title>
+    <!-- Font Awesome для иконок -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: #e9f0e9;
+            color: #1e2e1e;
+            line-height: 1.5;
+            padding: 20px;
+        }
+
+        .page-wrapper {
+            max-width: 1100px;
+            margin: 0 auto;
+            background-color: #f6faf6;
+            border-radius: 32px;
+            box-shadow: 0 20px 40px rgba(30, 50, 30, 0.08);
+            padding: 28px 32px 40px;
+            border: 1px solid #d3e0d3;
+        }
+
+        /* ШАПКА — только логотип */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+            padding-bottom: 18px;
+            border-bottom: 2px solid #c8d9c8;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            background-color: #2b5e2b;
+            color: white;
+            width: 48px;
+            height: 48px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            box-shadow: 0 4px 8px rgba(30, 70, 30, 0.15);
+        }
+
+        .logo-text {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1c3b1c;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-text span {
+            color: #4f7a4f;
+            font-weight: 300;
+        }
+
+        .header-links {
+            display: flex;
+            gap: 16px;
+            font-size: 15px;
+            font-weight: 500;
+            color: #2b542b;
+        }
+
+        .header-links a {
+            color: #1f4f1f;
+            text-decoration: none;
+            padding: 6px 14px;
+            border-radius: 40px;
+            background: #e5f0e5;
+            border: 1px solid #c5dcc5;
+            transition: 0.2s;
+        }
+
+        .header-links a:hover {
+            background: #d0e6d0;
+        }
+
+        /* ВСТУПЛЕНИЕ */
+        .rules-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1b381b;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .rules-title i {
+            color: #3f7a3f;
+            font-size: 26px;
+        }
+
+        .rules-sub {
+            color: #3e5f3e;
+            margin-bottom: 30px;
+            font-size: 15px;
+            border-left: 4px solid #7da37d;
+            padding-left: 18px;
+            background: #edf6ed;
+            border-radius: 0 20px 20px 0;
+            line-height: 1.6;
+        }
+
+        .rules-sub a {
+            color: #1f6b1f;
+            text-decoration: underline;
+            font-weight: 500;
+        }
+
+        .rules-sub i {
+            margin-right: 6px;
+        }
+
+        /* КАРТОЧКИ РАЗДЕЛОВ */
+        .rules-section {
+            background: white;
+            border-radius: 28px;
+            padding: 24px 28px;
+            margin-bottom: 28px;
+            border: 1px solid #d4e6d4;
+            box-shadow: 0 4px 12px rgba(30, 60, 30, 0.02);
+        }
+
+        .rules-section h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1d3d1d;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px dashed #c7ddc7;
+            padding-bottom: 10px;
+        }
+
+        .rules-section h2 i {
+            color: #2d6b2d;
+            width: 28px;
+            font-size: 20px;
+        }
+
+        /* СЕТКА МОДОВ */
+        .mod-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 6px 24px;
+            background: #f4fbf4;
+            padding: 16px 20px;
+            border-radius: 20px;
+            border: 1px solid #dcecdc;
+        }
+
+        .mod-item {
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+            padding: 4px 0;
+            font-size: 14px;
+            color: #1c3a1c;
+            border-bottom: 1px dotted #d0e2d0;
+        }
+
+        .mod-item i {
+            color: #4f8a4f;
+            font-size: 13px;
+            width: 20px;
+            flex-shrink: 0;
+        }
+
+        .mod-item .mod-name {
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .mod-item .mod-desc {
+            color: #3f603f;
+            font-size: 13px;
+            margin-left: 2px;
+        }
+
+        .badge-allowed {
+            background: #cbe5cb;
+            color: #124012;
+            border-radius: 30px;
+            font-size: 10px;
+            font-weight: 600;
+            padding: 0 10px;
+            margin-left: 6px;
+            white-space: nowrap;
+        }
+
+        .badge-banned {
+            background: #f0d9d9;
+            color: #7a2f2f;
+            border-radius: 30px;
+            font-size: 10px;
+            font-weight: 600;
+            padding: 0 10px;
+            margin-left: 6px;
+            white-space: nowrap;
+        }
+
+        .badge-warning {
+            background: #f5e9c6;
+            color: #6f5a1f;
+            border-radius: 30px;
+            font-size: 10px;
+            font-weight: 600;
+            padding: 0 10px;
+            margin-left: 6px;
+            white-space: nowrap;
+        }
+
+        /* БЛОК ЗАПРЕЩЁННОГО ФУНКЦИОНАЛА */
+        .warning-note {
+            background: #edf7ed;
+            border-radius: 20px;
+            padding: 16px 22px;
+            margin-bottom: 16px;
+            border-left: 6px solid #4b824b;
+            color: #1b3a1b;
+            font-size: 15px;
+        }
+
+        .warning-note i {
+            color: #3f7a3f;
+            margin-right: 10px;
+        }
+
+        .func-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding-left: 4px;
+        }
+
+        .func-item {
+            background: #ecf6ec;
+            border-radius: 16px;
+            padding: 10px 18px;
+            border-left: 4px solid #437d43;
+            font-size: 14px;
+            color: #1d3a1d;
+        }
+
+        .func-item i {
+            color: #2b682b;
+            width: 24px;
+            margin-right: 6px;
+        }
+
+        .func-item strong {
+            color: #1c4a1c;
+        }
+
+        .update-note {
+            margin-top: 18px;
+            background: #d5e6d5;
+            padding: 10px 18px;
+            border-radius: 50px;
+            font-size: 14px;
+            display: inline-block;
+        }
+
+        .update-note i {
+            margin-right: 8px;
+            color: #2b682b;
+        }
+
+        /* ФУТЕР */
+        .footer-meta {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #3d5f3d;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 20px;
+            border-top: 2px solid #d2e2d2;
+        }
+
+        .footer-meta a {
+            color: #1f5f1f;
+            text-decoration: none;
+            border-bottom: 1px dotted #87b087;
+            margin: 0 6px;
+        }
+
+        .footer-meta .discord {
+            background: #2e5a2e;
+            color: white;
+            padding: 6px 20px;
+            border-radius: 60px;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: none;
+        }
+
+        .footer-meta .discord i {
+            color: #b3e0b3;
+        }
+
+        .footer-meta .discord:hover {
+            background: #1f471f;
+        }
+
+        /* АДАПТИВ */
+        @media (max-width: 720px) {
+            .page-wrapper {
+                padding: 16px;
+            }
+            .header {
+                flex-direction: column;
+                align-items: start;
+                gap: 12px;
+            }
+            .mod-grid {
+                grid-template-columns: 1fr;
+                padding: 12px 14px;
+            }
+            .rules-section {
+                padding: 18px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrapper">
+
+    <!-- ШАПКА: только логотип и ссылки -->
+    <header class="header">
+        <div class="logo-area">
+            <div class="logo-icon"><i class="fas fa-cube"></i></div>
+            <div class="logo-text">JoyCraft<span>!</span></div>
+        </div>
+        <div class="header-links">
+            <a href="#"><i class="fas fa-store"></i> Магазин</a>
+            <a href="#"><i class="fas fa-users"></i> Форумы</a>
+            <a href="#"><i class="fas fa-trophy"></i> Награды</a>
+            <a href="#"><i class="fas fa-life-ring"></i> Поддержка</a>
+        </div>
+    </header>
+
+    <!-- ЗАГОЛОВОК ПРАВИЛ -->
+    <div class="rules-title">
+        <i class="fas fa-gavel"></i> Правила проекта JoyCraft
+    </div>
+    <div class="rules-sub">
+        <i class="fas fa-info-circle"></i> 
+        Зайти на сервер можно с любого ПК лаунчера Minecraft с версий 1.16.5–1.21.11.  
+        Моды не обязательны, дополняют игровой процесс на Ваш риск.  
+        Если считаете блокировку ложной — подайте апелляцию.  
+        <a href="#"><i class="fas fa-link"></i> Список разрешённых модов</a>
+    </div>
+
+    <!-- ===== РАЗРЕШЁННЫЕ МОДЫ ===== -->
+    <div class="rules-section">
+        <h2><i class="fas fa-check-circle"></i> Разрешённые моды</h2>
+        <div class="mod-grid">
+            <div class="mod-item">
+                <i class="fas fa-mouse-pointer"></i>
+                <span class="mod-name">Кликеры, макросы</span>
+                <span class="mod-desc">TapeMouse, AutoClanInvest, AutoTrade, AutoTransfer, TopkaAutoDrop, AutoDrop, AutoEat</span>
+            </div>
+            <div class="mod-item">
+                <i class="fas fa-paint-brush"></i>
+                <span class="mod-name">Визуальные эффекты</span>
+                <span class="mod-desc">PulseVisuals, TopkaVisuals, PlasmaClient, SelectVisuals, ParadoxVisuals, WarpVisuals, CustomBlockOverlay, TrajectoryGuard, DarknessVisuals, PrimeVisuals, ViewModel-Changer, Do a Barrel Roll, ZetaVisuals, AgateVisuals, AnomaTweaks, MoonLightClient, SoupApi, SpectraVisuals, SoupBetter, FlashVisual, AdaptiveVisuals, EnoughVisuals, TheCartel, PhantomVisuals, RainVisuals, StrangeVisuals, Mytheria, ImpulseVisuals, NotVisuals, WantedVisuals, StarVisuals, AIVisuals, AuraMod, BurstVisuals, IceVisuals, KastrixVisuals, EclipseVisuals, LolyVisuals, RivalVisuals, FlakeVisuals, FunVisuals, FentanylVisuals, ShinyVisuals, OnyxVisuals, VegaVisuals, PrizrakVisuals, RebornLight, AtomVisuals, DestraVisuals, ReallyVisuals</span>
+            </div>
+            <div class="mod-item">
+                <i class="fas fa-tools"></i>
+                <span class="mod-name">Иные разрешённые</span>
+                <span class="mod-desc">rct, PRIME PARTS, Chunks fade in, berdinskiybear's armor hud, AntiGhost, TopkaTags, ContainerSearcher, ItemLocks, Giselbaer's Durability Viewer, MiniHUD, TopkaHealth, ExitLag, Abstract, Custom FOV, Show Yourself, Jade, JJElytraSwap, InventoryCleaner, VisualRatio, AxolotlClient, ItemScroller, NoHurtCam, LavaClearWater, BetterHitReg</span>
+            </div>
+        </div>
+        <div style="margin-top: 14px;">
+            <span class="badge-allowed"><i class="fas fa-check"></i> Все моды из списка разрешены</span>
+        </div>
+    </div>
+
+    <!-- ===== ЗАПРЕЩЁННЫЕ МОДЫ ===== -->
+    <div class="rules-section">
+        <h2><i class="fas fa-ban"></i> Запрещённые моды</h2>
+        <div class="mod-grid">
+            <div class="mod-item">
+                <i class="fas fa-video"></i>
+                <span class="mod-name">Запись игры</span>
+                <span class="mod-desc">ReplayMod, IsometricRender, CmdCam, WorldDownloader, Flashback <span class="badge-banned">запрещено</span></span>
+            </div>
+            <div class="mod-item">
+                <i class="fas fa-robot"></i>
+                <span class="mod-name">Автодобыча / ресурсы</span>
+                <span class="mod-desc">AutoMining, ReplantingCrops, AutoHarvest, Reap, Tweakeroo, AutoFish, Accurate Block Placement, Baritone <span class="badge-banned">запрещено</span></span>
+            </div>
+            <div class="mod-item">
+                <i class="fas fa-eye"></i>
+                <span class="mod-name">Подсветка вне зоны</span>
+                <span class="mod-desc">Player Spotlight, AucHelper, ChestTracker, Friend Highlighter, Donut Auctions, XRay, DiamondGen, FreeCam, BaseFinder, TrueSight, МиниКарты (кроме LabyMod 3, Lunar), Neat, ChunkAnimator, MobHealthBar, Litematica/Schematica, WorldEdit, Better PVP, WorldDownloader, RemoveBlindness, Re:Entity Outline, AntiInvis, Cooldowns HUD, CheatUtils, No Darkness Effect <span class="badge-banned">запрещено</span></span>
+            </div>
+            <div class="mod-item">
+                <i class="fas fa-cogs"></i>
+                <span class="mod-name">Автоиспользование</span>
+                <span class="mod-desc">AutoBuy, AutoSell, AutoCasino, AutoPilot <span class="badge-banned">запрещено</span></span>
+            </div>
+            <div class="mod-item">
+                <i class="fas fa-crosshairs"></i>
+                <span class="mod-name">Автоматизация PvP / инвентарь</span>
+                <span class="mod-desc">InventoryControlTweaks, AutoLeave, Foodslot, Quickstack, ItemSwap, AutoTool, Movement in GUI, FasterBlockPlacement, Firework Helper, Effortless Building, InvMove, Inventory Profiles Next <span class="badge-banned">запрещено</span></span>
+            </div>
+            <div class="mod-item">
+                <i class="fas fa-user-slash"></i>
+                <span class="mod-name">Изменение PvP</span>
+                <span class="mod-desc">Dont Heat Teammates, Don't hit teammates, CleanCut, AutoAttack, AutoAim <span class="badge-banned">запрещено</span></span>
+            </div>
+            <div class="mod-item">
+                <i class="fas fa-skull"></i>
+                <span class="mod-name">Иные запрещённые</span>
+                <span class="mod-desc">FeverVisuals, LuminarVisuals, Ascart, Badlion Client, Эмуляторы (Pojav, FCL), SimpleVisuals, SoupApi (ниже 3.0.0), WaveVisuals, ClientCommands <span class="badge-banned">запрещено</span></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== ЗАПРЕЩЁННЫЙ ФУНКЦИОНАЛ ===== -->
+    <div class="rules-section">
+        <h2><i class="fas fa-exclamation-triangle"></i> Запрещённый функционал</h2>
+        <div class="warning-note">
+            <i class="fas fa-shield-alt"></i> Некоторые сборки или клиенты могут содержать запрещённый функционал, дающий нечестное преимущество.
+        </div>
+        <div class="func-list">
+            <div class="func-item">
+                <i class="fas fa-map-marked-alt"></i> <strong>Подсветка/маркировка</strong> игроков, блоков, мобов, предметов вне зоны видимости (мини-карты с маркировкой, подсветка невидимости)
+            </div>
+            <div class="func-item">
+                <i class="fas fa-robot"></i> <strong>Упрощённое взаимодействие</strong> с сервером без участия игрока (AutoBuy, авто-продажа и т.п.)
+            </div>
+            <div class="func-item">
+                <i class="fas fa-fist-raised"></i> <strong>Действия в PvP без открытия инвентаря</strong> (минимальная задержка 4 тика). Исключение — смена талисманов во второстепенной руке.
+            </div>
+            <div class="func-item">
+                <i class="fas fa-code"></i> <strong>Иные интерпретации чит-функций</strong> или их аналоги.
+            </div>
+        </div>
+        <div class="update-note">
+            <i class="fas fa-clock"></i> Последнее обновление: 13.06.2026 • Статья может быть отредактирована без уведомления.
+        </div>
+    </div>
+
+    <!-- ФУТЕР -->
+    <div class="footer-meta">
+        <div>
+            <i class="fas fa-copyright"></i> 2026 JoyCraft. <span style="color: #2b5a2b;">Создано с помощью EasyDonate.</span>
+        </div>
+        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+            <a href="#"><i class="fas fa-users"></i> Команда проекта</a>
+            <a href="#"><i class="fas fa-question-circle"></i> Поддержка</a>
+            <a href="#"><i class="fas fa-balance-scale"></i> Правила</a>
+            <span class="discord"><i class="fab fa-discord"></i> Discord</span>
+        </div>
+    </div>
+    <div style="margin-top: 16px; text-align: right; font-size: 13px; color: #527a52;">
+        <i class="fas fa-rss"></i> Локализация • <a href="#" style="color: #1d5e1d;">Помощь</a>
+    </div>
+</div>
+</body>
+</html>
